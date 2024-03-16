@@ -5,7 +5,12 @@
 	position: relative;
 	overflow: auto;
 }
-
+#logo{
+	color:white;
+	font-size:medium;
+	padding-top: 40px;
+	font-weight: bold;
+}
 #nav {
 	position: absolute;
 	top: 30px;
@@ -15,7 +20,7 @@
 #submenu_back {
 	top:100%;
 	padding: 0;
-	width: 1200px;
+	width: 1300px;
 	height: 0px;
 	background-color: #bbb6bc;
 	opacity: 0.6;
@@ -23,6 +28,7 @@
 	transition: height 0.3s;
 	-webkit-transition: height 0.3s;
 	top: 50px; /* 조정된 부분 */
+	
 }
 
 .intro {
@@ -38,12 +44,13 @@
 	text-decoration: none;
 	text-align: center;
 	color: black;
+	font-size: 16px;
 }
 
 .intro>li {
 	display: inline-block;
 	position: relative;
-	width: 100px;
+	width: 150px;
 }
 
 .intro>li ul {
@@ -66,7 +73,7 @@
 	font-weight:bold;
 }
 .intro:hover+#submenu_back, #submenu_back:hover {
-	height: 250px;
+	height: 350px;
 }
 
 .intro>li ul li a {
