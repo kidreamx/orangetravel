@@ -1,3 +1,13 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
 #backcolor {
 	position: relative;
 	background-color: #beb6f8;
