@@ -14,14 +14,16 @@ img{
   display: block;
 }
 
-#backcolor {
+.backcolor {
 	position: relative;
 	background-color: #beb6f8;
 	height: 600px;
+	width: 100%;
+	margin: 0 auto;
 	position: relative;
 	overflow: auto;
 }
-#logo{
+.logo{
 	color:white;
 	font-size:medium;
 	padding-top: 40px;
