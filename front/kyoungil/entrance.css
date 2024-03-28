@@ -1,0 +1,147 @@
+#backcolor {
+	position: relative;
+	background-color: #beb6f8;
+	height: 600px;
+	position: relative;
+	overflow: auto;
+}
+#logo{
+	color:white;
+	font-size:medium;
+	padding-top: 40px;
+	font-weight: bold;
+}
+#nav {
+	position: absolute;
+	top: 30px;
+	left: 150px;
+}
+
+#submenu_back {
+	top:100%;
+	padding: 0;
+	width: 1300px;
+	height: 0px;
+	background-color: #bbb6bc;
+	opacity: 0.6;
+	position: absolute;
+	transition: height 0.3s;
+	-webkit-transition: height 0.3s;
+	top: 50px; /* 조정된 부분 */
+	
+}
+
+.intro {
+	list-style-type: none;
+}
+
+.intro ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.intro a {
+	text-decoration: none;
+	text-align: center;
+	color: black;
+	font-size: 16px;
+}
+
+.intro>li {
+	display: inline-block;
+	position: relative;
+	width: 150px;
+}
+
+.intro>li ul {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1; /* 상위 메뉴보다 앞으로 나오도록 설정 */
+}
+
+.intro:hover>li ul {
+	display: block;
+}
+
+.intro>li:hover>a{
+	font-weight:bold;
+}
+
+.intro > li ul>li>a:hover{
+	font-weight:bold;
+}
+.intro:hover+#submenu_back, #submenu_back:hover {
+	height: 350px;
+}
+
+.intro>li ul li a {
+	display: block;
+	color: black;
+	margin-bottom: 10px;
+	margin-top:30px;
+}
+
+
+/*
+	3/24일 추가된 내용 (이미지 슬라이드)윤경일
+*/
+
+#pages-box{
+	position: absolute;
+	left:80px;
+}
+#information{
+	background-color: aqua;
+	position: absolute;
+	display:inline;
+	width: 1000px;
+	height: 200px;
+	top: 300px;
+	left: 150px;
+	
+}
+.button-pev , .button-next{
+	text-indent: -9999px;
+	position:absolute;
+	margin: 0;
+	width: 17px;
+	height: 16px;
+	background: url(https://korean.visitkorea.or.kr/resources/images/main/btn_showcase_arw.png)no-repeat;
+}
+.button-pev{
+	top:180px;
+	left:800px;
+	background-position: 0 0;
+}
+.button-next{
+	top:180px;
+	left:900px;
+	background-position: 0px -16px;
+}
+#img-wrap{
+	position:absolute;
+	left:1151px;
+	bottom:10px;
+}
+#imgs{
+	width:50%;
+	
+}
+.pages-current, .pages-total{
+	position:absolute;
+	width:17px;
+	height:16px;
+}
+.pages-current{
+	top:180px;
+	left:830px;
+}
+#slide{
+	left:855px;
+}
+.pages-total{
+	top:180px;
+	left:870px;
+}
