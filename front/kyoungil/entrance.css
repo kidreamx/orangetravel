@@ -72,7 +72,10 @@
 .intro > li ul>li>a:hover{
 	font-weight:bold;
 }
-.intro:hover+#submenu_back, #submenu_back:hover {
+/*
+승원이가 submenu 오류 정정
+*/
+.intro:hover+#submenu_back { 
 	height: 350px;
 }
 
