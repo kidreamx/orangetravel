@@ -1,0 +1,200 @@
+#backcolor {
+	position: relative;
+	/*background:linear-gradient(#29d6a0 0% ,#19d8ff 100%);
+	*/
+	background-color: #c3e0e6;
+	height: 600px;
+	position: relative;
+	overflow: auto;
+}
+#logo{
+	color:#29d6a0;
+	font-size:medium;
+	padding-top: 40px;
+	font-weight:bolder;
+}
+#nav {
+	position: absolute;
+	top: 30px;
+	left: 150px;
+}
+
+#submenu_back {
+	top:100%;
+	padding: 0;
+	width: 1300px;
+	height: 0px;
+	background-color: #a9d1da;
+	opacity: 0.6;
+	position: absolute;
+	transition: height 0.3s;
+	-webkit-transition: height 0.3s;
+	top: 50px; /* 조정된 부분 */
+	z-index: 2;
+}
+
+.intro {
+	list-style-type: none;
+}
+
+.intro ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.intro a {
+	text-decoration: none;
+	text-align: center;
+	color: black;
+	font-size: 16px;
+}
+
+.intro>li {
+	display: inline-block;
+	position: relative;
+	width: 150px;
+}
+
+.intro>li ul {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 5; /* 상위 메뉴보다 앞으로 나오도록 설정 */
+}
+
+.intro:hover>li ul {
+	display: block;
+}
+
+.intro>li:hover>a{
+	font-weight:bold;
+}
+
+.intro > li ul>li>a:hover{
+	font-weight:bold;
+}
+/*
+승원이가 submenu 오류 정정
+*/
+.intro:hover+#submenu_back { 
+	height: 350px;
+}
+
+.intro>li ul li a {
+	display: block;
+	color: black;
+	margin-bottom: 10px;
+	margin-top:30px;
+}
+
+
+/*
+	3/24일 추가된 내용 (이미지 슬라이드)윤경일
+*/
+
+#pages-box{
+	position: absolute;
+	top:240px;
+	right:180px;
+}
+#information{
+	/*
+	background-color: #7ca587;
+	*/
+	background:linear-gradient(#29d6a0 0% ,#19d8ff 100%);
+	position: absolute;
+	display:inline;
+	width: 1100px;
+	height: 300px;
+	top: 300px;
+	left: 0px;
+	
+}
+.button-pev , .button-next{
+	text-indent: -9999px;
+	position:absolute;
+	margin: 0;
+	width: 17px;
+	height: 16px;
+	background: url(https://korean.visitkorea.or.kr/resources/images/main/btn_showcase_arw.png)no-repeat;
+}
+
+.button-pev{
+	background-position: 0 0;
+	top:5px;
+	left:-30px;
+}
+.button-next{
+	background-position: 0px -16px;
+	top:5px;
+	left:60px;
+}
+
+
+#img-wrap{
+	position:absolute;
+	left:1151px;
+	bottom:10px;
+}
+#imgs{
+	width:50%;
+	
+}
+/*
+.pages-current, .pages-total{
+	position:absolute;
+	width:17px;
+	height:16px;
+}
+.pages-current{
+	top:180px;
+	left:830px;
+}
+*/
+#slide{
+	left:855px;
+}
+/*
+.pages-total{
+	top:180px;
+	left:870px;
+}
+*/
+@keyframes progressBar {
+	0% {
+			width: 0%;
+	}
+	100% {
+			width: 100%;
+	}
+}
+
+#bar {
+	left:-50px;
+	width: 150px;
+	height: 3px; /* 얇은 선의 높이 */
+	position: absolute;
+	top: 150%;
+	transform: translateY(-50%);
+	background-color: #ccc; /* 얇은 선의 색상 */
+}
+
+#bar::before {
+	content: '';
+	display: block;
+	width: 0%;
+	height: 100%; 
+	background-color: black; 
+	animation: progressBar 3s linear infinite; 
+}
+
+
+#letter{	
+	position:absolute;
+	display:block;
+	left:50px;
+	top:150px;
+	font-size: 130%;
+
+}
