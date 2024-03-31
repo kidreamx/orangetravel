@@ -28,7 +28,7 @@
 	transition: height 0.3s;
 	-webkit-transition: height 0.3s;
 	top: 50px; /* 조정된 부분 */
-	
+	z-index: 2;
 }
 
 .intro {
@@ -58,7 +58,7 @@
 	position: absolute;
 	top: 100%;
 	left: 0;
-	z-index: 1; /* 상위 메뉴보다 앞으로 나오도록 설정 */
+	z-index: 5; /* 상위 메뉴보다 앞으로 나오도록 설정 */
 }
 
 .intro:hover>li ul {
