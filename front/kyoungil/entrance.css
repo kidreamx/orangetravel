@@ -1,6 +1,6 @@
 #backcolor {
 	position: relative;
-	background-color: #beb6f8;
+	background:linear-gradient(#29d6a0 0% ,#19d8ff 100%);
 	height: 600px;
 	position: relative;
 	overflow: auto;
@@ -96,7 +96,7 @@
 	left:80px;
 }
 #information{
-	background-color: aqua;
+	background-color: rgb(41, 214, 160);
 	position: absolute;
 	display:inline;
 	width: 1000px;
