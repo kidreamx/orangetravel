@@ -90,7 +90,7 @@ img{
 .intro > li ul>li>a:hover{
 	font-weight:bold;
 }
-.intro:hover+#submenu_back, #submenu_back:hover {
+.intro:hover+#submenu_back{
 	height: 350px;
 }
 
