@@ -133,13 +133,16 @@
 
 
 #img-wrap{
-	position:absolute;
-	left:1150px;
-	bottom:10px;
+	position:fixed;
+	left:1000px;
+	top:200px;
+	border: solid 1px black;
 }
 #imgs{
-	width:100%;
-	
+	width:300px;
+	height:500px;
+	object-fit:fill;
+	width: 100%;	
 }
 /*
 .pages-current, .pages-total{
