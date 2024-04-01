@@ -6,7 +6,7 @@ const pages_current = document.querySelector("#current");
 let imgs_index = 0;
 imgs.src = `img/${bg[0]}`
 button_pev.addEventListener("click",(e)=>{
-  if(pages_current.innerHTML == "01"){
+  if(pages_current.innerHTML === "01"){
     pages_current.innerHTML = "04";
     imgs_index=3;
   }
@@ -17,7 +17,7 @@ button_pev.addEventListener("click",(e)=>{
   imgs.src = `img/${bg[imgs_index]}`
 })
 button_next.addEventListener("click",(e)=>{
-  if(pages_current.innerHTML == "04"){
+  if(pages_current.innerHTML === "04"){
     pages_current.innerHTML = "01";
     imgs_index=0;
   }

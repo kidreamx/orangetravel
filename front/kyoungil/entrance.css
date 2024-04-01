@@ -176,12 +176,11 @@
 	height: 3px; /* 얇은 선의 높이 */
 	position: absolute;
 	top: 150%;
-	transform: translateY(-50%);
 	background-color: #ccc; /* 얇은 선의 색상 */
 }
 
 #bar::before {
-	content: '';
+	content:''; /*이거 없으면 색칠 안됩니도*/
 	display: block;
 	width: 0%;
 	height: 100%; 
