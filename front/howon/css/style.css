@@ -1,0 +1,264 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body{
+  font-family: "Noto Sans KR", sans-serif;
+  color:#333333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+img{
+  display: block;
+}
+
+a{
+  text-decoration: none;
+}
+
+.inner{
+  width: 1100px;
+  /* 가운데 정렬 */
+  margin: 0 auto;
+  position: relative;
+}
+
+.btn {
+  width: 130px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  transition: .4s;
+  background-color: rgba(255, 255, 255,.3);
+  
+}
+
+.btn:hover{
+  background-color: #333;
+  color: #fff;
+}
+
+/* header */
+header {
+  
+  background-color: rgb(255, 247, 227);
+  border-bottom: 1px solid #c8c8c8;
+  
+}
+
+header > .inner{
+  height: 120px;
+}
+
+/* .sub-menu */
+header .sub-menu{
+  position: absolute;
+  top:10px;
+  right: 0;
+  display: flex;
+  
+}
+
+header .sub-menu ul.menu{
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+header .sub-menu ul.menu li{
+  position: relative;
+} 
+
+header .sub-menu ul.menu li::before{
+  content: "";
+  /* 구분선 */
+  width: 1px;
+  height: 12px;
+  background-color: #e5e5e5;
+  /* position 자동으로 block으로 바뀜 */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+header .sub-menu ul.menu li:first-child:before{
+  display: none;
+}
+
+header .sub-menu ul.menu li a{
+  font-size: 12px;
+  padding: 11px 16px;
+  display: block;
+  color: #656565;
+}
+
+header .logo{
+  height: 100px;
+  position: absolute;
+  top: -20px;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+header img{
+  position: absolute;
+  height: 120px;
+  width: 100px;
+}
+
+/* main-menu */
+header .main_menu{
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+
+header .main_menu .menu_list{
+  display: flex;
+  
+}
+
+
+
+header .main_menu .menu_list > li a{
+  display: block;
+  padding: 10px 60px 24px 60px;
+  color: black;
+}
+
+/* notice */
+.notice .promotion {
+  height: 693px;
+  background-color: #f6f5ef;
+  position: relative;
+  transition: height .4s;
+  overflow: hidden;
+}
+
+.notice .promotion.hide{
+  height: 0;
+}
+
+.notice .promotion .swiper{
+  width: calc(819px * 3 + 20px);
+  /* width: calc(100% - 50px); */
+  height: 553px;
+  
+  /* 요소 가운데 배치 */
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  margin-left: -980.5px;
+  /* calc((819px * 3 + 20px) / -2) */
+}
+
+.notice .promotion .swiper-slide{
+  opacity: .5;
+  transition: opacity 1s;
+  position: relative;
+}
+.notice .promotion .swiper-slide-active{
+  /* 개발자도구를 통해 확인 가운데 요소 */
+  opacity: 1;
+  z-index: 5;
+}
+
+.notice .promotion .swiper-slide .content .btn{
+
+  display: block;
+  margin: auto;
+  /* 가로 넓이 위에 명시되어있음 */
+}
+
+.notice .promotion .swiper-slide .content{
+  position: absolute;
+  top: 120px;
+  left : -400px;
+  background-color: rgb(255, 247, 227);
+  padding: 40px;
+}
+.notice .promotion .swiper-slide .content .htest1{
+  font-weight: 700;
+  font-size: 24px;
+}
+.notice .promotion .swiper-slide .content h1{
+  margin-bottom: 10px;
+}
+.notice .promotion .swiper-slide .content p{
+  margin-bottom: 20px;
+}
+.notice .promotion .swiper-pagination{
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
+
+.notice .promotion .swiper-pagination .swiper-pagination-bullet{
+  /* swiper-pagination-bullet 개발자 도구에서 확인 */
+  background-color: transparent;
+  background-image: url("../images/promotion_slide_pager.png");
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  outline: none;
+}
+
+.notice .promotion .swiper-pagination .swiper-pagination-bullet:last-child{
+  margin-right: 0px;
+}
+
+.notice .promotion .swiper-pagination .swiper-pagination-bullet-active{
+  background-image: url("../images/promotion_slide_pager_on.png");
+}
+
+.notice .promotion .swiper-prev,
+.notice .promotion .swiper-next {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  top:300px;
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .4s;
+}
+
+.notice .promotion .swiper-prev{
+  left: 50%;
+  margin-left: -230px;
+}
+
+.notice .promotion .swiper-next{
+  right: 50%;
+  margin-right: -750px;
+}
+
+.notice .promotion .swiper-prev:hover,
+.notice .promotion .swiper-next:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+
+
+
+
