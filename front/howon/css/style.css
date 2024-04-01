@@ -160,7 +160,7 @@ header .main_menu .menu_list > li a{
   
   /* 요소 가운데 배치 */
   position: absolute;
-  top: 40px;
+  top: 10px;
   left: 50%;
   margin-left: -980.5px;
   /* calc((819px * 3 + 20px) / -2) */
@@ -202,7 +202,7 @@ header .main_menu .menu_list > li a{
   margin-bottom: 20px;
 }
 .notice .promotion .swiper-pagination{
-  bottom: 40px;
+  bottom: 90px;
   left: 0;
   right: 0;
 }
