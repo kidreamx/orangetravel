@@ -17,6 +17,7 @@
 	position: absolute;
 	top: 30px;
 	left: 150px;
+	
 }
 
 #submenu_back {
@@ -35,11 +36,15 @@
 
 .intro {
 	list-style-type: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: auto;
 }
 
 .intro ul {
 	list-style-type: none;
-	padding: 0;
+	
 }
 
 .intro a {
@@ -50,9 +55,10 @@
 }
 
 .intro>li {
-	display: inline-block;
+	text-align: center;
 	position: relative;
 	width: 150px;
+	padding: 0;
 }
 
 .intro>li ul {
