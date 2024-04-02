@@ -23,3 +23,17 @@ new Swiper('.promotion .swiper', {
   }
 });
 
+new Swiper('.location .swiper',{
+  autoplay: true,
+  loop: true,
+  spaceBetween :30,
+  slidesPerView: 5,
+  navigation:{
+    prevEl: '.location .swiper-prev',
+    nextEl: '.location .swiper-next'
+  }
+});
+
+
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear();
