@@ -148,32 +148,49 @@ header .main_menu .menu_list > li a{
 .profil {
   margin-top: 150px;
 }
-
-.company_profil {
-  width: 100%;
-  height: auto;
-  display: inline;
+.profil h2{
+  font-size: larger;
+  padding-left:20px;
+  padding-top:5px;
+  padding-bottom:25px;
 }
 
-.ondoil {
-  display: inline-block;
+
+.profil table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profil td {
+  padding: 20px;
+  border: 5px solid black; /* 테두리 스타일 설정 */
+}
+
+.profil img {
+  max-width: 100%;
+  height: auto;
 }
 
 .intro {
-  display: inline-block;
-  vertical-align: top; /* 세로 정렬 추가 */
-  margin-left: 20px; /* 왼쪽 여백 추가 */
+  vertical-align: top; 
+}
+.intro p {
+  padding-top: 90px;
 }
 
 
 /* individual style */
+.individual_profile h2{
+  font-size: larger;
+  padding-left:20px;
+  padding-top:25px;
+}
 .card {
-  margin-top: 100px;
   margin-bottom:60px;
   width: 280px;
   height: 280px;
   top:auto;
-  background: white;
+  background: black;
   border-radius: 32px;
   padding: 3px;
   position: relative;
@@ -192,7 +209,7 @@ header .main_menu .menu_list > li a{
 }
 
 .card .mail svg {
-  stroke: #fbb9b6;
+  stroke: #F9F0E7;
   stroke-width: 3px;
 }
 
@@ -208,7 +225,7 @@ header .main_menu .menu_list > li a{
   left: 3px;
   border-radius: 29px;
   z-index: 1;
-  border: 0px solid #fbb9b6;
+  border: 0px solid #F9F0E7;
   overflow: hidden;
   transition: all 0.5s ease-in-out 0.2s, z-index 0.5s ease-in-out 0.2s;
 }
@@ -239,7 +256,7 @@ header .main_menu .menu_list > li a{
   bottom: 3px;
   left: 3px;
   right: 3px;
-  background: #fbb9b6;
+  background: #F9F0E7;
   top: 80%;
   border-radius: 29px;
   z-index: 2;
@@ -258,15 +275,15 @@ header .main_menu .menu_list > li a{
 
 .card .bottom .content .name {
   display: block;
-  font-size: 1.2rem;
-  color: white;
+  font-size: 1.2em;
+  color: balck;
   font-weight: bold;
 }
 
 .card .bottom .content .about-me {
   display: block;
   font-size: 0.9rem;
-  color: white;
+  color: black;
   margin-top: 1rem;
 }
 
@@ -298,7 +315,7 @@ header .main_menu .menu_list > li a{
 
 .card .bottom .bottom-bottom .button {
   background: white;
-  color: #fbb9b6;
+  color: #669900;
   border: none;
   border-radius: 20px;
   font-size: 0.6rem;
@@ -329,7 +346,7 @@ header .main_menu .menu_list > li a{
   left: 10px;
   border-radius: 50%;
   z-index: 3;
-  border: 7px solid #fbb9b6;
+  border: 7px solid #669900;
   box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px;
   transition: all 0.5s ease-in-out, z-index 0.5s ease-in-out 0.1s;
 }
