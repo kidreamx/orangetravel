@@ -179,7 +179,7 @@
 	}
 }
 
-#bar {
+#bar-container {
 	left:-50px;
 	width: 150px;
 	height: 3px; /* 얇은 선의 높이 */
@@ -187,15 +187,15 @@
 	top: 150%;
 	background-color: #ccc; /* 얇은 선의 색상 */
 }
-
-#bar::before {
-	content: '';
-	display: block;
-	width: 0%;
-	height: 100%; 
-	background-color: black; 
-	animation: progressBar 3s linear infinite; 
+#bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: #333;
+	animation: progressBar 3s linear infinite;
 }
+
 
 
 #letter{	
