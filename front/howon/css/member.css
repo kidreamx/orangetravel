@@ -144,91 +144,70 @@ header .main_menu .menu_list > li a{
   color: black;
 }
 
-
-/* mypages */
-.mypages{
-  padding-top: 120px;
+/* members */
+.members{
+  margin-top: 120px;
   background-color: #f6f5ef;
-}
-
-.mypages .inner{
   
 }
-
-.mypages .inner h1{
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-weight: 800;
-  color: #333;
-  font-size: 36px;
-  letter-spacing: -1px;
-  
-}
-.mypages .inner .mypagebox {
+.members .inner{
   display: flex;
-  
-}
-
-
-.mypages .inner .mypagebox .box{
-  background-color: #f0f075;
-  width: 340px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  margin-bottom: 40px;
-  margin-left: 70px;
-}
-
-
-.mypages .inner .mypagebox .box .content{
-  position: absolute;
-  padding: 80px;
-  text-align: center;
- 
-}
-.mypages .inner .box .pform{
- 
-}
-
-.mypages .inner .box .pform .profile{
-
-}
-
-.mypages .inner .box .pform .profile img{
-  width: 80px;
-  height: 80px;
-  margin: auto;
   
 }
 
-.mypages .inner .box .pform p{
-  margin-top: 20px;
-  font-size: 28px;
+.members h1 {
+  width: 360px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.5;
+  margin-bottom: 1em;
+  color: #101010;
+  letter-spacing: -.05em;
+  margin-top: 30px;
 }
 
-.mypages .inner .box .pform .userName{
+
+
+.members label {
   display: block;
-  margin-top: 10px;
-  font-size: 20px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 20px;
 }
 
-.mypages .myactive{
-  margin-left: 100px;
-}
-.mypages .myactive h1{
-  font-size: 25px;
-}
-.mypages .myactive .active-box{
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 20px;
-  
+input {
+  display: block;
+  width: 360px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 7px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  border: 1px solid #d3dce6;
+  transition: border-color 200ms ease-in-out;
 }
 
+input:focus,
+input:hover,
+input:active {
+  outline: none;
+  box-shadow: none;
+  border-color: #1fb6ff;
+}
+
+input[type="file"] {
+  padding-top: 10px;
+}
+
+.members .inner .container .btn{
+  margin-bottom: 60px;
+  background-color: #73e0fe;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-top: 30px;
+}
 
 
 /* footer */
