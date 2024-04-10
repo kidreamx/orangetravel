@@ -148,10 +148,17 @@ header .main_menu .menu_list>li a {
 /* section main body*/
 .main_body {
   position: relative;
+  display:block;
   width: 100%;
-  height: 500px;
+  height: calc(100vh - 120px); /* 화면 전체 높이에서 헤더 높이를 뺀 값으로 설정 */
   top: 120px;
   overflow: auto;
+  margin-bottom: 150px;
+  
+}
+.main_body>.inner>div{
+  position:absolute;
+  top:1.5em;
 }
 
 .season_menu {
@@ -168,11 +175,55 @@ header .main_menu .menu_list>li a {
   border: 2px solid #333;
   text-align: center;
   width:50vh;
+  height:5vh;
 }
 .season>th:hover{
   background-color: #669900;
   color:white;
 }
+
+/* season_content 요소를 Flexbox로 설정 */
+.season_content {
+  margin-top: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+.season_content .content-item {
+  display: flex; /* 이미지와 텍스트를 옆으로 나란히 배치 */
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+.season_content .text-container {
+  flex: 1; /* 남은 공간을 모두 차지 */
+}
+
+.season_content .image-container {
+  margin-right: 20px; /* 이미지와 텍스트 사이 간격 조정 */
+}
+
+.content-item + .content-item {
+  margin-top: 20px;
+}
+
+/* 이미지 스타일링 */
+.season_content .image-container img {
+  width: 300px; /* 이미지 너비 설정 */
+  height: 300px; /* 이미지 높이 설정 */
+  object-fit: cover; /* 이미지가 자리를 차지하도록 설정 */
+  object-position: center center; /* 이미지를 수직과 수평으로 가운데 정렬 */
+}
+
+
+/* 텍스트 스타일링 */
+.season_content .text-container {
+  flex: 1; /* 텍스트 컨테이너가 남은 공간을 모두 차지하도록 설정 */
+}
+
+.season_content .text-container p {
+  font-size: 16px; /* 텍스트 크기 조정 */
+  color: #333; /* 텍스트 색상 지정 */
+}
+
 
 
 /* footer */
