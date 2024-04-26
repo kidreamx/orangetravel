@@ -24,7 +24,9 @@ new Swiper('.promotion .swiper', {
 });
 
 new Swiper('.location .swiper',{
-  autoplay: true,
+  autoplay: {
+    delay: 3000
+  },
   loop: true,
   spaceBetween :30,
   slidesPerView: 5,
