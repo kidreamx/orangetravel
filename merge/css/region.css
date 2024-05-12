@@ -13,10 +13,17 @@ body{
 }
 img{
   display: block;
+  
 }
 
 a{
   text-decoration: none;
+  color: black;
+}
+
+a:hover,
+a:focus {
+  color: rgb(167, 144, 238);
 }
 
 .inner{
@@ -144,14 +151,25 @@ header .main_menu .menu_list > li a{
   color: black;
 }
 
+/* 각 테마별 키컬러로 작성 기준 #FEFAEF 점차 각 지역 테마 색으로 https://cssgradient.io/  아래색이 기준 */
+
+
+
+.background{
+  background: rgb(255,227,227); 
+  background: linear-gradient(0deg, rgba(255,227,227,1) 0%, rgba(254,250,239,1) 100%);
+}
+
 /* LOCATION */
 .location{
-  background-color:#FEFAEF;
+  /* background-color:#FEFAEF; */
   margin-top: 120px;
+  
 }
 
 .location .inner{
   padding: 40px 0;
+  
 }
 
 .location .inner .swiper .swiper-wrapper .swiper-slide img{
@@ -209,57 +227,88 @@ header .main_menu .menu_list > li a{
   font-weight: 700;
 }
 
-
-
+/* region */
+.region{
+  border-top: 1px solid #c8c8c8;
+  
+}
 
 .region_content {
-  
-  
-  width: 1100px;
+  display: none;
+  width: 800px;
+  height: 100vh;
   /* 가운데 정렬 */
-  margin: 0 auto;
+  margin: auto;
   position: relative;
+ 
 }
 
 .region_content .content-item{
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
 }
 
 .region_content .image-container {
   margin-right: 50px; /* 이미지와 텍스트 사이 간격 조정 */
 }
 .region_content .image-container img{
-  width: 100px ;
-  height: 50px;
+  width: 350px ;
+  height: 250px;
   object-fit: cover; /* 이미지가 자리를 차지하도록 설정 */
-  object-position: center center; /* 이미지를 수직과 수평으로 가운데 정렬 */
+  object-position: center center;
 }
 
-
-
-
-/* 텍스트 스타일링 */
-.season_content .text-container {
-  flex: 1; /* 텍스트 컨테이너가 남은 공간을 모두 차지하도록 설정 */
-}
-
-.season_content .text-container p {
-  font-size: 16px; /* 텍스트 크기 조정 */
-  color: #333; /* 텍스트 색상 지정 */
-}
-
-/* region-imformation */
-/* .region-imformation{
-  border-top: 1px solid #333;
-  background-color:#FEFAEF;
+/* default */
+.region_default{
   
-} */
+  width: 800px;
+  height: 100vh;
+  /* 가운데 정렬 */
+  margin: auto;
+  position: relative;
+}
+
+.region_default .item-default1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.region_default .item-default1 .image-default{
+  margin-right: 50px;
+}
+
+.region_default .item-default1 .image-default img{
+  width: 350px ;
+  height: 250px;
+  object-fit: cover; /* 이미지가 자리를 차지하도록 설정 */
+  object-position: center center;
+ 
+}
+
+
+.text-container{
+  flex: 1
+}
+.text-container strong{
+  font-weight: 700;
+  
+}
+
+.text-container p{
+  line-height : normal;
+  font-size: 20px;
+}
+
 
 
 /* footer */
 footer{
   background-color: #F9F0E7;
-  border-top: 1px solid #333;
+  border-top: 1px solid #c8c8c8;
 }
 
 footer .inner{
