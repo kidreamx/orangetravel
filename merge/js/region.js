@@ -16,7 +16,7 @@ new Swiper('.location .swiper',{
 
 
 var regionInfo = {
-  ga: {
+  gwangju: {
     images: ['./images/문화재/증심사.jpg',
       './images/문화재/선교사사택.jpg'
     ],
@@ -29,7 +29,7 @@ var regionInfo = {
       
     ]
   },
-  dam: {
+  Damyang: {
     images: [
       './images/문화재/창평향교.jpg',
       './images/문화재/선교사사택.jpg'
@@ -44,7 +44,7 @@ var regionInfo = {
     ]
   },
 
-  gogs: {
+  Gokseong: {
     images: ['./images/문화재/태안사 일주문.jpg',
       './images/문화재/선교사사택.jpg'
     ],
@@ -57,20 +57,38 @@ var regionInfo = {
       
     ]
   },
+
+  Naju: {
+    images: ['./images/문화재/태안사 일주문.jpg',
+      './images/문화재/선교사사택.jpg'
+    ],
+    texts: [
+     '<strong> 일주문 </strong> <br>곡성 태안사 일주문(谷城 泰安寺 一柱門)는 대한민국 전라남도 곡성군 죽곡면 원달리, 태안사에 있는 일주문이다. 1981년 10월 20일 전라남도의 유형문화재 제83호로 지정되었다.  <br> 태안사 일주문은 위로 갈수록 좁아지는 두 개의 굵은 기둥 위에 앞면 1칸의 규모로 세웠으며, 지붕 옆면이 사람 인(人)자 모양인 단순한 맞배지붕이다.  ',
+     '<strong>우일선 선교사 사택</strong> <br>광주광역시 동구 무등산 서쪽 기슭에 자리한 불교 절입니다.  <br> 이 절은 신라 시대에 철감선사 도윤에 의해 9세기 중엽에 처음 세워졌으며, 고려 선종 때 혜조국사가 중수했습니다.'
+    
+    ],
+    links: [
+      
+    ]
+  },
 };
 
 var regioncolor = {
-  ga: {
+  gwangju: {
     colors: ['linear-gradient(0deg, rgba(255,227,227,1) 0%, rgba(254,250,239,1) 100%)'],
   },
-  dam: {
+  Damyang: {
     colors: [
       'linear-gradient(0deg, rgba(227,255,240,1) 0%, rgba(254,250,239,1) 100%)'
     ], 
   },
 
-  gogs: {
+  Gokseong: {
     colors: ['linear-gradient(0deg, rgba(0,144,214,0.8184523809523809) 0%, rgba(254,250,239,1) 100%)'],
+  },
+
+  Naju: {
+    colors: ['linear-gradient(0deg, rgba(255,194,7,0.8184523809523809) 0%, rgba(254,250,239,1) 100%)'],
   },
   
 };
@@ -94,8 +112,13 @@ function changecolor(region){
   var colors = regioncolor[region].colors;
 
   
-  for (var i = 0; i < 10; i++) {
-      sections[i].style.background = colors[i % colors.length];
+  if (colors && colors.length > 0) {
+    var color = colors[0]; // 첫 번째 색상 값만 사용
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].style.background = color;
+    }
+  } else {
+    console.error('색상 정보를 찾을 수 없습니다: ', region);
   }
 }
 
