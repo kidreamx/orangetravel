@@ -1,7 +1,7 @@
 const writeFrm = document.querySelector("#writeFrm")
 console.log(writeFrm);
 
-class Board {
+class Board { //객체에 데이터 저장
   constructor(indexNum, subjectStr, writerStr, contentStr) {
     this.index = indexNum;
     this.Subject = subjectStr;
@@ -27,7 +27,7 @@ class Board {
   }
 }
 
-const recordDate = () => {
+const recordDate = () => {  // 작성 날짜
   const date = new Date();
   const yyyy = date.getFullYear();
   let mm = date.getMonth() + 1;
