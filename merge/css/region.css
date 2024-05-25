@@ -282,13 +282,13 @@ header .main_menu .menu_list>li a {
 }
 
 .text-container strong {
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .text-container p {
   line-height: normal;
-  font-size: 20px;
-  width: 600px;
+  font-size: 15px;
+  width: 500px;
 }
 
 /* footer */

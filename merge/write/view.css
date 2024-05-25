@@ -206,10 +206,11 @@ header .main_menu .menu_list > li a{
 
 .board_view {
   width: 100%;
-  max-height: 600px;
+  height: 700px;
   overflow-y: auto;
   border-top: 2px solid #000;
   font-size: 1.0rem;
+  border-bottom: 2px solid #000;
 }
 .board_view .title {
   padding: 20px 15px;
@@ -217,8 +218,8 @@ header .main_menu .menu_list > li a{
   font-size: 1.2rem;
 }
 .board_view .info {
-  padding: 15px;
-  border-bottom: 1px solid #999;
+  
+  
   font-size : 0;
   /* ㄴ🟡 (바로 아래 주석과 이어짐)띄어쓰기 0으로 만들기 위해서  */
 
@@ -231,16 +232,17 @@ header .main_menu .menu_list > li a{
   부모태그로 올라가서 font-size : 0을 주어야 된다. */
 }
 .board_view .info div:first-child {
-  padding-left: 0;
+  padding: 15px;
   margin-left: 0;
   padding-right: 120px;
 }
+
 
 .board_view .info div::before {
   content: "";
   display: block;
   width: 1px;
-  height: 13px;
+  height: 35px;
   background: #ddd;
   display: block;
   position: absolute;
@@ -266,17 +268,24 @@ header .main_menu .menu_list > li a{
 
 .board_view .info div {
   margin-left: 10px;
-  color: #777;
+  color: #777;  
+  
 }
 
 .board_view .info div:last-child {
   display: block;
-  margin-top: 30px;
+  margin-top: 5px;
   padding: 0;
   margin-left: 0;
 }
 
-
+#content{
+  height: 300px;
+  width: 980px;
+  padding: 5px 15px;
+  
+  border-top: 1px dashed #ddd;
+}
 
 
 
