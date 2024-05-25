@@ -103,14 +103,41 @@ Element.prototype.setStyle = function(styles) {
 
 document.getElementById('popup_open_btn').addEventListener('click', function() {
   // 모달창 띄우기
-  modal('my_modal');
+  modal('my_modal1');
 });
 
 
 document.getElementById('popup_open_btn1').addEventListener('click', function() {
   // 모달창 띄우기
-  modal('city_modal');
+  modal('city_modal2');
 });
 
+document.getElementById('popup_open_btn2').addEventListener('click', function() {
+  // 모달창 띄우기
+  modal('city_modal3');
+});
+
+document.getElementById('popup_open_btn3').addEventListener('click', function() {
+  // 모달창 띄우기
+  modal('city_modal4');
+});
+
+document.getElementById('popup_open_btn4').addEventListener('click', function() {
+  // 모달창 띄우기
+  modal('city_modal5');
+});
+
+document.getElementById('popup_open_btn5').addEventListener('click', function() {
+  // 모달창 띄우기
+  modal('city_modal6');
+});
+document.getElementById('popup_open_btn6').addEventListener('click', function() {
+  // 모달창 띄우기
+  modal('city_modal7');
+});
+document.getElementById('popup_open_btn7').addEventListener('click', function() {
+  // 모달창 띄우기
+  modal('city_modal8');
+});
 
 
