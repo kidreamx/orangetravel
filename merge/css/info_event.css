@@ -144,6 +144,17 @@ header .main_menu .menu_list>li a {
   padding: 10px 60px 24px 60px;
   color: black;
 }
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #1b1b1b;
+  color: #ddd;
+}
 
 /* section main body*/
 .main_body {
@@ -179,8 +190,8 @@ header .main_menu .menu_list>li a {
   height:5vh;
 }
 .season>th:hover{
-  background-color: #669900;
-  color:white;
+  background-color: white;
+  color:black;
 }
 
 /* season_content 요소를 Flexbox로 설정 */
