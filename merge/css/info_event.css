@@ -9,7 +9,6 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.4;
-
 }
 
 img {
@@ -41,7 +40,6 @@ a {
   display: block;
   transition: .4s;
   background-color: rgba(255, 255, 255, .3);
-
 }
 
 .btn:hover {
@@ -72,7 +70,6 @@ header .sub-menu {
   right: 0;
   display: flex;
   z-index: 10;
-
 }
 
 header .sub-menu ul.menu {
@@ -136,7 +133,6 @@ header .main_menu {
 
 header .main_menu .menu_list {
   display: flex;
-
 }
 
 header .main_menu .menu_list>li a {
@@ -144,6 +140,7 @@ header .main_menu .menu_list>li a {
   padding: 10px 60px 24px 60px;
   color: black;
 }
+
 th, td {
   padding: 8px;
   text-align: left;
@@ -156,42 +153,39 @@ th {
   color: #ddd;
 }
 
-/* section main body*/
+/* section main body */
 .main_body {
   position: relative;
-  display:block;
+  display: block;
   width: 100%;
-  height: calc(100vh - 120px); /* 화면 전체 높이에서 헤더 높이를 뺀 값으로 설정 */
-  top: 120px;
-  overflow: auto;
-  margin-bottom: 150px;
+  min-height: calc(100vh - 120px); /* 화면 전체 높이에서 헤더 높이를 뺀 값으로 설정 */
+  padding-top: 120px; /* 내용이 헤더와 겹치지 않도록 패딩 추가 */
   background-color: #f6f5ef;
-  
+  padding-bottom: 150px; /* 내용이 footer와 겹치지 않도록 패딩 추가 */
 }
-.main_body>.inner>div{
-  position:absolute;
-  top:1.5em;
+
+.main_body>.inner>div {
+  position: relative;
+  top: 1.5em;
 }
 
 .season_menu {
   display: flex;
   justify-content: center;
-  left: 0;
-  right: 0;
-  position: absolute;
-  top:0;
-  bottom: 0;
+  position: relative;
+  top: 0;
 }
 
 .season>th {
   border: 2px solid #333;
   text-align: center;
-  width:50vh;
-  height:5vh;
+  width: 50vh;
+  height: 5vh;
 }
-.season>th:hover{
+
+.season>th:hover {
   background-color: white;
-  color:black;
+  color: black;
 }
 
 /* season_content 요소를 Flexbox로 설정 */
@@ -200,6 +194,7 @@ th {
   display: flex;
   flex-direction: column;
 }
+
 .season_content .content-item {
   display: flex; /* 이미지와 텍스트를 옆으로 나란히 배치 */
   align-items: center; /* 수직 가운데 정렬 */
@@ -220,11 +215,10 @@ th {
 /* 이미지 스타일링 */
 .season_content .image-container img {
   width: 300px; /* 이미지 너비 설정 */
-  height: 300px; /* 이미지 높이 설정 */
+  height: auto; /* 이미지 높이 설정 */
   object-fit: cover; /* 이미지가 자리를 차지하도록 설정 */
   object-position: center center; /* 이미지를 수직과 수평으로 가운데 정렬 */
 }
-
 
 /* 텍스트 스타일링 */
 .season_content .text-container {
@@ -236,12 +230,10 @@ th {
   color: #333; /* 텍스트 색상 지정 */
 }
 
-
-
 /* footer */
 footer {
   background-color: #F9F0E7;
-  border-top: 1px solid #333;
+  border-top: 1px solid #c8c8c8;
 }
 
 footer .inner {
@@ -284,7 +276,6 @@ footer .menu li a {
 footer .menu li a.green {
   color: #669900;
 }
-
 
 footer .info {
   margin-top: 30px;

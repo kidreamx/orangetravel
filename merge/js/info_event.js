@@ -34,11 +34,11 @@ var seasonsInfo = {
       ,'https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=19ab1881-4e7f-4ef1-8e4d-0940f5f5c1be&cntntsNm=%EB%82%98%EC%A3%BC%EB%AC%B8%ED%99%94%EC%9E%AC%EC%95%BC%ED%96%89'
     ]
   },
-  /*fall: {
-    images: ['fall_image.jpg'],
-    texts: ['가을에 대한 내용'],
-    links: []
-  },*/
+  fall: {
+    images: ['./images copy/계절별축제/가을축제/충장축제.png'],
+    texts: ['일시 : 2024년 10월 02일 ~ 2024년 10월 06일 <br>행사 이름: 광주 충장축제 <br> 주최: 광주광역시'],
+    links: ['https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=7d2cf1b1-9e46-470d-bfa9-4e2b8272802b&cntntsNm=%EA%B4%91%EC%A3%BC%EC%B6%94%EC%96%B5%EC%9D%98%EC%B6%A9%EC%9E%A5%EC%B6%95%EC%A0%9C']
+  },
   /*winter: {
     images: [],
     texts: [],
