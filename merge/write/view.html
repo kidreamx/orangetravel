@@ -16,88 +16,81 @@
   <!-- swiper -->
   <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <link rel="stylesheet" href="./grid.min.css">
-  <link rel="stylesheet" href="./css/mypage.css">
-  <script defer src=""></script>
+
+  <link rel="stylesheet" href="./view.css">
+  <script defer src="./view.js"></script>
 </head>
 <body>
 
   <header>
     <div class="inner">
-      <a href="./index.html" class="logo">
-        <img src="./images/전라남도투어 nobackcut.png" alt="onedoil">
+      <a href="../index.html" class="logo">
+        <img src="../images/전라남도투어 nobackcut.png" alt="onedoil">
       </a>
       <div class="sub-menu">
         <ul class="menu">
           <li>
-            <a href="./login.html">로그인</a>
+            <a href="../login.html">로그인</a>
           </li>
           <li>
-            <a href="./member.html">회원가입</a>
+            <a href="../member.html">회원가입</a>
           </li>
           <li>
-            <a href="./mypage.html">마이페이지</a>
+            <a href="../mypage.html">마이페이지</a>
           </li>
         </ul>
       </div>
 
-      <div class="main_menu">
-        <div class="menu-back"></div>
-          <ul class="menu_list">
-            <li>
-              <a href="./introduce.html">소개</a>
-            </li>
-            <li>
-              <a href="./region.html">지역</a>
-            </li>
-            <li>
-              <a href="./infro_event.html">행사정보</a>
-            </li>
-            <li>
-              <a href="./write/border.html">게시판</a>
-            </li>
-          </ul>
-        </div>
+        <div class="main_menu">
+          <div class="menu-back"></div>
+            <ul class="menu_list">
+              <li>
+                <a href="../introduce.html">소개</a>
+              </li>
+              <li>
+                <a href="../region.html">지역</a>
+              </li>
+              <li>
+                <a href="../infro_event.html">행사정보</a>
+              </li>
+              <li>
+                <a href="./border.html">게시판</a>
+              </li>
+            </ul>
+          </div>
       </div>
     </div>
   </header>
   
-  <section class="mypages">
-    <div class="inner">
-      <h1>마이페이지</h1>
-      <div class="mypagebox">
-        <div class="box">
-          <div class="content">
-            <form action="" class="pform">
-            <div class="profile">
-              <img src="./images/아이콘 노랑.png" alt="profile">
+  <section class="view">
+    <div class="board_wrap">
+      <div class="board_title">
+        <strong>게시판</strong>
+        <p>게시판을 빠르고 정확하게 안내해드립니다.</p>
+      </div>
+
+      <div class="board_view_wrap">
+        <div class="board_view">
+          <form id="viewFrm">
+            <div class="title" id ="subject">제목: </div>
+            <div class="info">
+              <div id="writer">작성자 :</div>
+              <div id="date">작성일 :</div>
+              <div id="content"></div>
             </div>
-            <p>반가워요!</p>
-            <strong class="userName">user 님</strong>
           </form>
-          </div>
+          
+          
         </div>
-  
-        <div class="myactive">
-          <h1>나의 활동</h1>
-              <div class="active-box">
-                <p class="subscription-desc">나의 게시글</p>
-                <form action="" method="post" class="subscription-form">
-                <div class="input-group">
-                  <input type="email" placeholder="Enter your email"/>
-                  <button type="submit" class="fill-button">Get started</button>
-                </div>
-                <p class="form-notice">Cancel any time. Check out 
-                  <a href="#">Terms of Use.</a>
-                </p>
-              </form>
-              </div>
+        <div class="bt_wrap">
+          <button id="modify">수정</button>
+          <button><a href="./border.html" class="on">목록</a></button>
+          <button id="delete">삭제</button>
+          
         </div>
       </div>
+    </div>
 
-      </div>
-
-    
   </section>
 
   
