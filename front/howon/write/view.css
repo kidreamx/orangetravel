@@ -162,19 +162,19 @@ header .main_menu .menu_list > li a{
 }
 
 .board_title strong {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .board_title p {
   margin-top: 5px;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .bt_wrap {
   margin-top: 30px;
   text-align: center;
   font-size: 0;
-  text-align: center;
+  
 }
 
 .bt_wrap a {
@@ -200,12 +200,12 @@ header .main_menu .menu_list > li a{
   max-height: 600px;
   overflow-y: auto;
   border-top: 2px solid #000;
-  font-size: 1.4rem;
+  font-size: 1.0rem;
 }
 .board_view .title {
   padding: 20px 15px;
   border-bottom: 1px dashed #ddd;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .board_view .info {
   padding: 15px;
@@ -229,7 +229,6 @@ header .main_menu .menu_list > li a{
 
 .board_view .info div::before {
   content: "";
-  
   display: block;
   width: 1px;
   height: 13px;
@@ -251,7 +250,7 @@ header .main_menu .menu_list > li a{
 .board_view .info div,
 .board_view .info div {
   display: inline-block;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 
