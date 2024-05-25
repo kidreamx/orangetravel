@@ -23,3 +23,28 @@ document.getElementById("subject").innerText += " " + board.subject;
 document.getElementById("writer").innerText += " " + board.writer;
 document.getElementById("date").innerText += " " + board.date;
 document.getElementById("content").innerText += " " + board.content;
+
+
+const modifyBtn = document.querySelector("#modify");
+
+const modifyBtnHandler = (e) => {
+  location ="./modify.html"+idx;
+};
+
+modifyBtn.addEventListener("click", modifyBtnHandler);
+
+// 삭제 버튼
+const deleteBtn = document.querySelector("#delete");
+
+const deleteBtnHandler = (e) => {
+  boardsObj.splice(index, 1);
+  for (let i = 0; i < boardsObj.length; i++) {
+    boardsObj[i].index = i;
+  }
+
+  const setBoardsStr = JSON.stringify(boardsObj);
+  localStorage.setItem("boards", setBoardsStr);
+  location.href = "./border.html";
+};
+
+deleteBtn.addEventListener("click", deleteBtnHandler);
