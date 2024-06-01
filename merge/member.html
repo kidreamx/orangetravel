@@ -24,13 +24,13 @@
 
   <header>
     <div class="inner">
-      <a href="./index.html" class="logo">
+      <a href="#" class="logo">
         <img src="./images/전라남도투어 nobackcut.png" alt="onedoil">
       </a>
       <div class="sub-menu">
         <ul class="menu">
           <li>
-            <a href="./login.html">로그인</a>
+            <a href="#">로그인</a>
           </li>
           <li>
             <a href="./member.html">회원가입</a>
@@ -41,23 +41,23 @@
         </ul>
       </div>
 
-      <div class="main_menu">
-        <div class="menu-back"></div>
-          <ul class="menu_list">
-            <li>
-              <a href="./introduce.html">소개</a>
-            </li>
-            <li>
-              <a href="./region.html">지역</a>
-            </li>
-            <li>
-              <a href="./infro_event.html">행사정보</a>
-            </li>
-            <li>
-              <a href="./write/border.html">게시판</a>
-            </li>
-          </ul>
-        </div>
+        <div class="main_menu">
+          <div class="menu-back"></div>
+            <ul class="menu_list">
+              <li>
+                <a href="#">소개</a>
+              </li>
+              <li>
+                <a href="#">지역</a>
+              </li>
+              <li>
+                <a href="#">행사정보</a>
+              </li>
+              <li>
+                <a href="#">공지사항</a>
+              </li>
+            </ul>
+          </div>
       </div>
     </div>
   </header>
@@ -68,7 +68,7 @@
       
       <div class="container">
         
-        <form action="" method="POST">
+        <form action="" method="get">
           <h1>회원가입</h1>
           <label for="name">이름</label>
           <input type="text" required placeholder="이름" id="name"/>
@@ -91,7 +91,7 @@
           <label for="file">파일</label>
           <input type="file" accept="image/*, audio/*, video/*" id="file"/>
   
-          <button class="btn">가입하기</button>
+          <button class="btn" id="enroll">가입하기</button>
   
   
       </form>
@@ -127,5 +127,52 @@
   </footer>
 
   
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAZtBOfNz-cKXbAqne3CzfH2xmoDoqCX8s",
+      authDomain: "giveup-spring.firebaseapp.com",
+      projectId: "giveup-spring",
+      storageBucket: "giveup-spring.appspot.com",
+      messagingSenderId: "701630073980",
+      appId: "1:701630073980:web:534d93e0885b1e50334df9",
+      measurementId: "G-NW45JJLY8Z"
+    };
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    document.getElementById('enroll').addEventListener('click',(evnet)=>{
+      event.preventDefault();
+      const $email = document.getElementById('mail').value;
+      const $passwd = document.getElementById('pwd').value;
+      console.log($email,$passwd);
+      const auth = getAuth();
+    createUserWithEmailAndPassword(auth, $email, $passwd)
+      .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log(userCredential);
+      window.location.href = "./login.html";
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log("에러");
+      // ..
+    });
+  
+    });
+   
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </body>
 </html>
