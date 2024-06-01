@@ -30,7 +30,7 @@
       <div class="sub-menu">
         <ul class="menu">
           <li>
-            <a href="#">로그인</a>
+            <a href="./login.html">로그인</a>
           </li>
           <li>
             <a href="./member.html">회원가입</a>
@@ -45,16 +45,16 @@
           <div class="menu-back"></div>
             <ul class="menu_list">
               <li>
-                <a href="#">소개</a>
+                <a href="./introduce.html">소개</a>
               </li>
               <li>
-                <a href="#">지역</a>
+                <a href="./region.html">지역</a>
               </li>
               <li>
-                <a href="#">행사정보</a>
+                <a href="./infro_event.html">행사정보</a>
               </li>
               <li>
-                <a href="#">공지사항</a>
+                <a href="./write/border.html">게시판</a>
               </li>
             </ul>
           </div>
@@ -131,11 +131,10 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+    import { getFirestore } from "firebase/firestore";
+    import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // Firebase 초기화
     const firebaseConfig = {
       apiKey: "AIzaSyAZtBOfNz-cKXbAqne3CzfH2xmoDoqCX8s",
       authDomain: "giveup-spring.firebaseapp.com",
@@ -145,34 +144,50 @@
       appId: "1:701630073980:web:534d93e0885b1e50334df9",
       measurementId: "G-NW45JJLY8Z"
     };
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-    document.getElementById('enroll').addEventListener('click',(evnet)=>{
-      event.preventDefault();
-      const $email = document.getElementById('mail').value;
-      const $passwd = document.getElementById('pwd').value;
-      console.log($email,$passwd);
-      const auth = getAuth();
-    createUserWithEmailAndPassword(auth, $email, $passwd)
-      .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log(userCredential);
-      window.location.href = "./login.html";
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log("에러");
-      // ..
-    });
-  
-    });
-   
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+
+    import { doc, setDoc } from "firebase/firestore"; 
+
+// Add a new document in collection "cities"
+await setDoc(doc(db, "cities", "LA"), {
+  name: "Los Angeles",
+  state: "CA",
+  country: "USA"
+});
+    // 사용자 상태 변경 이벤트 리스너 추가
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // 사용자가 로그인된 경우 메인 페이지로 리디렉션
+        alert('이미 로그인 되어있습니다!!');
+        window.location.href = "./index.html";
+      }
+    });
+  
+    document.getElementById('enroll').addEventListener('click',(event)=>{
+      event.preventDefault();
+      const email = document.getElementById('mail').value;
+      const password = document.getElementById('pwd').value;
+      
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // 회원가입 성공 시 실행되는 코드
+          alert('회원가입이 완료되었습니다!');
+          // 로그인 페이지로 이동
+          window.location.href = "./login.html";
+        })
+        .catch((error) => {
+          // 회원가입 실패 시 실행되는 코드
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          alert('회원가입에 실패하였습니다. 다시 시도해주세요.');
+        });
+    });
   </script>
+  
 </body>
 </html>

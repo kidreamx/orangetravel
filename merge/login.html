@@ -54,7 +54,7 @@
               <a href="./infro_event.html">행사정보</a>
             </li>
             <li>
-              <a href="#">공지사항</a>
+              <a href="./write/border.html">게시판</a>
             </li>
           </ul>
         </div>
@@ -143,11 +143,9 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+    import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // Firebase 초기화
     const firebaseConfig = {
       apiKey: "AIzaSyAZtBOfNz-cKXbAqne3CzfH2xmoDoqCX8s",
       authDomain: "giveup-spring.firebaseapp.com",
@@ -157,34 +155,53 @@
       appId: "1:701630073980:web:534d93e0885b1e50334df9",
       measurementId: "G-NW45JJLY8Z"
     };
-
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-    document.getElementById('loginBtn').addEventListener('click',(event)=>{
-      event.preventDefault();
-      const email = document.getElementById('email').value
-      const password = document.getElementById('password').value
-      const auth = getAuth();
-      signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      window.location.href = "./index.html";
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log("에러");
-    });
-  });
-
-  
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+  
+    // 사용자 상태 변경 이벤트 리스너 추가
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // 사용자가 이미 로그인된 경우 대화상자로 로그아웃 여부 확인
+        if (confirm("로그아웃 하시겠습니까?")) {
+          // 예를 선택한 경우 로그아웃 실행
+          signOut(auth)
+            .then(() => {
+              // 로그아웃 성공 시 실행되는 코드
+              console.log("로그아웃되었습니다.");
+            })
+            .catch((error) => {
+              // 로그아웃 실패 시 실행되는 코드
+              console.log("로그아웃에 실패했습니다:", error);
+            });
+        } else {
+          // 아니오를 선택한 경우 아무것도 하지 않음
+          console.log("로그아웃이 취소되었습니다.");
+        }
+      }
+    });
+  
+    // 로그인 버튼 클릭 이벤트 핸들러
+    document.getElementById('loginBtn').addEventListener('click',(event)=>{
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // 로그인 성공 시 실행되는 코드
+          const user = userCredential.user;
+          window.location.href = "./index.html";
+        })
+        .catch((error) => {
+          // 로그인 실패 시 실행되는 코드
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          // 에러 처리를 원하는 대로 수행
+        });
+    });
   </script>
-
   
 </body>
 </html>
