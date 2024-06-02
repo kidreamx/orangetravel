@@ -160,26 +160,7 @@
   
     // 사용자 상태 변경 이벤트 리스너 추가
     const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // 사용자가 이미 로그인된 경우 대화상자로 로그아웃 여부 확인
-        if (confirm("로그아웃 하시겠습니까?")) {
-          // 예를 선택한 경우 로그아웃 실행
-          signOut(auth)
-            .then(() => {
-              // 로그아웃 성공 시 실행되는 코드
-              console.log("로그아웃되었습니다.");
-            })
-            .catch((error) => {
-              // 로그아웃 실패 시 실행되는 코드
-              console.log("로그아웃에 실패했습니다:", error);
-            });
-        } else {
-          // 아니오를 선택한 경우 아무것도 하지 않음
-          console.log("로그아웃이 취소되었습니다.");
-        }
-      }
-    });
+   
   
     // 로그인 버튼 클릭 이벤트 핸들러
     document.getElementById('loginBtn').addEventListener('click',(event)=>{
@@ -190,7 +171,9 @@
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           // 로그인 성공 시 실행되는 코드
+          alert("로그인 성공");
           const user = userCredential.user;
+          
           window.location.href = "./index.html";
         })
         .catch((error) => {
