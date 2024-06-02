@@ -18,7 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <link rel="stylesheet" href="./writing.css">
-  <script defer src="./writing.js"></script>
+  <!--<script defer src="./writing.js"></script>-->
 </head>
 <body>
 
@@ -70,42 +70,33 @@
         <p>여러분의 솔직한 리뷰를 기다립니다.</p>
       </div>
 
-
-
       <div class="board_write_wrap">
         <div class="board_write">
-          <form id ="writeFrm">
+          <form id="writeFrm">
             <div class="title">
               <dl>
                 <dt>제목</dt>
-                <dd><input type="text" name="subject" placeholder="제목 입력" /></dd>
+                <dd><input type="text" name="subject" placeholder="제목 입력" required /></dd>
               </dl>
             </div>
             <div class="info">
               <dl>
                 <dt>글쓴이</dt>
-                <dd><input type="text" name="writer" placeholder="글쓴이 입력" /></dd>
+                <dd><input type="text" name="writer" id="writer" placeholder="글쓴이 입력" readonly required /></dd>
               </dl>
             </div>
             <div class="cont">
-              <textarea placeholder="내용 입력" name="content"></textarea>
+              <textarea placeholder="내용 입력" name="content" required></textarea>
             </div>
             <div class="bt_wrap">
               <input type="submit" value="글작성"/>
               <a href="./border.html">취소</a>
             </div>
           </form>
-          </div>
-        
-          
+        </div>
+      </div>
     </div>
-  </div>
-  
-
-  
-</section>
-
-
+  </section>
 
   <footer>
     <div class="inner">
@@ -113,7 +104,6 @@
         <li><a href="#" class="green">개인정보처리방침</a></li>
         <li><a href="#">홈페이지 이용약관</a></li>
         <li><a href="#">위치정보 이용약관</a></li>
-        
       </ul>
       
       <div class="info">
@@ -125,10 +115,75 @@
       <p class="copyright">
         &copy; <span class="this-year"> </span> ONEDOIL . ALL RIGHTS RESERVED.
       </p>
-
     </div>
   </footer>
 
-  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAZtBOfNz-cKXbAqne3CzfH2xmoDoqCX8s",
+      authDomain: "giveup-spring.firebaseapp.com",
+      projectId: "giveup-spring",
+      storageBucket: "giveup-spring.appspot.com",
+      messagingSenderId: "701630073980",
+      appId: "1:701630073980:web:534d93e0885b1e50334df9",
+      measurementId: "G-NW45JJLY8Z"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+    const db = getFirestore(app);
+
+    // Set user name if logged in
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const uid = user.uid;
+        const userDoc = doc(db, 'users', uid);
+        const docSnapshot = await getDoc(userDoc);
+
+        if (docSnapshot.exists()) {
+          const userData = docSnapshot.data();
+          const writerInput = document.getElementById('writer');
+          writerInput.value = userData.name;
+        }
+      }
+    });
+
+    // Handle form submission
+    document.getElementById('writeFrm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const subject = event.target.subject.value;
+      const writer = event.target.writer.value;
+      const content = event.target.content.value;
+      const createdAt = new Date();
+
+      if (subject && writer && content) {
+        try {
+          const postsCollection = collection(db, 'posts');
+          await addDoc(postsCollection, {
+            subject,
+            writer,
+            content,
+            createdAt
+          });
+
+          alert('글이 성공적으로 작성되었습니다.');
+          window.location.href = './border.html';
+        } catch (error) {
+          console.error('Error writing document: ', error);
+          alert('글 작성 중 오류가 발생했습니다: ' + error.message);
+        }
+      } else {
+        alert('모든 필드를 채워주세요.');
+      }
+    });
+  </script>
 </body>
 </html>

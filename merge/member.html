@@ -125,16 +125,14 @@
 
     </div>
   </footer>
-
-  
   <script type="module">
-    // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-    import { getFirestore } from "firebase/firestore";
-    import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
   
-    // Firebase 초기화
+    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyAZtBOfNz-cKXbAqne3CzfH2xmoDoqCX8s",
       authDomain: "giveup-spring.firebaseapp.com",
@@ -144,50 +142,53 @@
       appId: "1:701630073980:web:534d93e0885b1e50334df9",
       measurementId: "G-NW45JJLY8Z"
     };
+
+    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+    const auth = getAuth();
+    const storage = getStorage(app);
     const db = getFirestore(app);
 
-    import { doc, setDoc } from "firebase/firestore"; 
-
-// Add a new document in collection "cities"
-await setDoc(doc(db, "cities", "LA"), {
-  name: "Los Angeles",
-  state: "CA",
-  country: "USA"
-});
-    // 사용자 상태 변경 이벤트 리스너 추가
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // 사용자가 로그인된 경우 메인 페이지로 리디렉션
-        alert('이미 로그인 되어있습니다!!');
-        window.location.href = "./index.html";
-      }
-    });
-  
-    document.getElementById('enroll').addEventListener('click',(event)=>{
+    document.getElementById("enroll").addEventListener('click', async (event) => {
       event.preventDefault();
+
       const email = document.getElementById('mail').value;
       const password = document.getElementById('pwd').value;
-      
-      const auth = getAuth();
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // 회원가입 성공 시 실행되는 코드
-          alert('회원가입이 완료되었습니다!');
-          // 로그인 페이지로 이동
-          window.location.href = "./login.html";
-        })
-        .catch((error) => {
-          // 회원가입 실패 시 실행되는 코드
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorMessage);
-          alert('회원가입에 실패하였습니다. 다시 시도해주세요.');
-        });
+      const name = document.getElementById('name').value;
+      const tel = document.getElementById('tel').value;
+      const age = document.getElementById('age').value; 
+      const fileInput = document.getElementById('file');
+      const file = fileInput.files[0];
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        const userDoc = doc(db, 'users', user.uid);
+        const userData = {
+          email: user.email,
+          name : name,
+          age : age,
+          tel : tel
+        };
+
+        if (file) {
+          const storageRef = ref(storage, `uploads/${user.uid}/${file.name}`);
+          await uploadBytes(storageRef, file);
+          const downloadURL = await getDownloadURL(storageRef);
+          userData.fileName = file.name;
+          userData.fileUrl = downloadURL;
+        }
+
+        await setDoc(userDoc, userData);
+
+        alert('회원가입 및 파일 업로드가 완료되었습니다.');
+      } catch (error) {
+        console.error("Error signing up with email and password", error);
+        alert('회원가입 중 오류가 발생했습니다: ' + error.message);
+      }
     });
   </script>
-  
 </body>
 </html>
