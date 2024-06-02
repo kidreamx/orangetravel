@@ -137,7 +137,7 @@
   </footer>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFirestore, getDocs, collection, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
   
     // 파이어베이스 구성 정보
     const firebaseConfig = {
@@ -157,7 +157,8 @@
     // 파이어베이스에서 게시물 불러오기
     async function loadPosts() {
       try {
-        const querySnapshot = await getDocs(collection(db, "posts"));
+        const q = query(collection(db, 'posts'), orderBy('index', 'asc')); // index 필드를 기준으로 오름차순으로 정렬
+        const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
           console.log(doc.id, " => ", doc.data());
@@ -167,9 +168,9 @@
         console.error("Error loading posts: ", error);
       }
     }
-  
+    
     // 게시물을 화면에 렌더링
-    function renderPost(postData) {
+    async function renderPost(postData) {
       const tbody = document.querySelector("tbody");
       const template = `
         <tr>
@@ -188,7 +189,5 @@
       await loadPosts(); // 파이어베이스에서 게시물 불러오기
     });
   </script>
-  
-  
 </body>
 </html>
