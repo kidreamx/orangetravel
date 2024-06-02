@@ -18,7 +18,6 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <link rel="stylesheet" href="./view.css">
-  <script defer src="./view.js"></script>
 </head>
 <body>
 
@@ -121,6 +120,55 @@
     </div>
   </footer>
 
-  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+    import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAZtBOfNz-cKXbAqne3CzfH2xmoDoqCX8s",
+      authDomain: "giveup-spring.firebaseapp.com",
+      projectId: "giveup-spring",
+      storageBucket: "giveup-spring.appspot.com",
+      messagingSenderId: "701630073980",
+      appId: "1:701630073980:web:534d93e0885b1e50334df9",
+      measurementId: "G-NW45JJLY8Z"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const index = urlParams.get('index');
+      
+      if (index) {
+        try {
+          const postsCollection = collection(db, 'posts');
+          const q = query(postsCollection, where('index', '==', parseInt(index)));
+          const querySnapshot = await getDocs(q);
+          
+          if (!querySnapshot.empty) {
+            const post = querySnapshot.docs[0].data();
+            document.getElementById('subject').textContent = `제목: ${post.subject}`;
+            document.getElementById('writer').textContent = `작성자: ${post.writer}`;
+            document.getElementById('date').textContent = `작성일: ${post.formattedDate}`;
+            document.getElementById('content').textContent = post.content;
+          } else {
+            alert('해당 게시글을 찾을 수 없습니다.');
+            window.location.href = './border.html';
+          }
+        } catch (error) {
+          console.error('Error getting document: ', error);
+          alert('게시글을 불러오는 중 오류가 발생했습니다: ' + error.message);
+        }
+      } else {
+        alert('유효한 게시글 번호가 없습니다.');
+        window.location.href = './border.html';
+      }
+    });
+  </script>
 </body>
 </html>

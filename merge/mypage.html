@@ -74,6 +74,7 @@
               </div>
               <p>반가워요!</p>
               <strong class="userName" id="uname">user 님</strong>
+              <p id="uidtxt"></p>
             </form>
           </div>
         </div>
@@ -84,7 +85,7 @@
                 <p class="subscription-desc">나의 게시글</p>
                 <form action="" method="post" class="subscription-form">
                 <div class="input-group">
-                  <input type="email" placeholder="Enter your email"/>
+                  <input id="uidInput" type="text" placeholder="Enter your uid(delete @!!)"/>
                   <button type="submit" class="fill-button">Get started</button>
                 </div>
                 <p class="form-notice">Cancel any time. Check out 
@@ -92,6 +93,7 @@
                 </p>
               </form>
               </div>
+              <table id="postTable"></table>
         </div>
       </div>
     </div>
@@ -121,7 +123,8 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFirestore, doc, getDoc, query, where, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
   
     // Firebase configuration
     const firebaseConfig = {
@@ -150,6 +153,9 @@
           const userData = docSnapshot.data();
           const userName = document.getElementById('uname');
           userName.textContent = `${userData.name} 님`;
+          const uidvalue = document.getElementById('uidtxt');
+          uidvalue.textContent=`@${user.uid}`;
+          uidvalue.style.fontSize = 'smaller';
 
           if (userData.fileUrl) {
             const profileImage = document.getElementById('profileImage');
@@ -162,6 +168,51 @@
         console.log("User is signed out");
       }
     });
+    document.querySelector('.subscription-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const uid = document.getElementById('uidInput').value.trim();
+      if (uid) {
+        const posts = await getPostsByUID(uid);
+        displayPosts(posts);
+      } else {
+        console.log('Please enter a UID');
+      }
+    });
+
+    async function getPostsByUID(uid) {
+      const postsQuery = query(collection(db, 'posts'), where('uid', '==', uid));
+      const querySnapshot = await getDocs(postsQuery);
+      const posts = [];
+      querySnapshot.forEach(doc => {
+        posts.push(doc.data());
+      });
+      return posts;
+    }
+    function displayPosts(posts) {
+  const table = document.getElementById('postTable');
+  if (table) {
+    // Clear previous table content
+    table.innerHTML = `
+      <tr>
+        <th>글제목</th>
+        <th>작성자</th>
+        <th>등록일</th>
+      </tr>
+    `;
+    // Populate table with new data
+    posts.forEach((post, index) => {
+      const row = table.insertRow(-1);
+      row.insertCell(0).textContent = post.subject;
+      row.insertCell(1).textContent = post.writer;
+      row.insertCell(2).textContent = post.formattedDate;
+    });
+  } else {
+    console.error('Table element not found');
+  }
+}
+  
+    
+    
   </script>
 </body>
 </html>

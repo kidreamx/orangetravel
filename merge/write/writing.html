@@ -122,8 +122,8 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, doc, getDoc, setDoc, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
+    import { getFirestore, doc, getDoc, setDoc, collection, addDoc, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  
     const firebaseConfig = {
       apiKey: "AIzaSyAZtBOfNz-cKXbAqne3CzfH2xmoDoqCX8s",
       authDomain: "giveup-spring.firebaseapp.com",
@@ -133,47 +133,71 @@
       appId: "1:701630073980:web:534d93e0885b1e50334df9",
       measurementId: "G-NW45JJLY8Z"
     };
-
+  
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth();
     const db = getFirestore(app);
-
+  
+    let currentUser = null;
+  
     // Set user name if logged in
     onAuthStateChanged(auth, async (user) => {
       if (user) {
+        currentUser = user;
         const uid = user.uid;
         const userDoc = doc(db, 'users', uid);
         const docSnapshot = await getDoc(userDoc);
-
+  
         if (docSnapshot.exists()) {
           const userData = docSnapshot.data();
           const writerInput = document.getElementById('writer');
           writerInput.value = userData.name;
+          
         }
       }
     });
-
-    // Handle form submission
+  
+    async function getNextIndex() {
+      const postsCollection = collection(db, 'posts');
+      const q = query(postsCollection, orderBy('index', 'desc'), limit(1));
+      const querySnapshot = await getDocs(q);
+      if (querySnapshot.empty) {
+        return 1;
+      } else {
+        const lastDoc = querySnapshot.docs[0];
+        return lastDoc.data().index + 1;
+      }
+    }
+  
     document.getElementById('writeFrm').addEventListener('submit', async (event) => {
       event.preventDefault();
-
+  
       const subject = event.target.subject.value;
       const writer = event.target.writer.value;
       const content = event.target.content.value;
-      const createdAt = new Date();
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const day = String(currentDate.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
 
+  
       if (subject && writer && content) {
         try {
+          const index = await getNextIndex();
           const postsCollection = collection(db, 'posts');
+          
           await addDoc(postsCollection, {
             subject,
             writer,
             content,
-            createdAt
+            formattedDate,
+            index,
+            uid: currentUser
           });
-
+  
           alert('글이 성공적으로 작성되었습니다.');
           window.location.href = './border.html';
         } catch (error) {
@@ -185,5 +209,6 @@
       }
     });
   </script>
+  
 </body>
 </html>
